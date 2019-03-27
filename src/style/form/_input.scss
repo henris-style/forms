@@ -1,0 +1,65 @@
+@mixin henris-input($el: 'input-field'){
+	.#{$base-prefix}#{$el} {
+		input {			
+			&[type='text'],
+			&[type='date'],
+			&[type='datetime-local'],
+			&[type='month'],
+			&[type='time'],
+			&[type='week'],
+			&[type='search'],
+			&[type='email'],
+			&[type='tel'],
+			&[type='number'],
+			&[type='password'],
+			&[type='url'] {
+				@include henris-input-default();
+			}
+		}
+		.input {
+			&--ghost,
+			&--naked {
+				input {
+					&[type='text'],
+					&[type='email'],
+					&[type='tel'],
+					&[type='number'],
+					&[type='password'],
+					&[type='url'] {
+						@include henris-input-ghost();
+					}
+				}
+			}
+		}
+
+		input {
+			&[type='submit'],
+			&[type='reset'],
+			&[type='button'] {
+				@include henris-button-default();
+			}
+		}
+
+		input {
+			&[type='color'] {
+				width: 32px;
+				height: 32px;
+				border: none;
+				-webkit-appearance: none;
+
+				&::-webkit-color-swatch-wrapper {
+					padding: 0;
+				}
+				&::-webkit-color-swatch {
+					border: none;
+				}
+			}
+		}
+		label{
+			@include henris-label();
+		}
+	}
+}
+@if output(form-input) {
+	@include henris-input();
+}

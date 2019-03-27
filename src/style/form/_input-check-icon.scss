@@ -1,0 +1,83 @@
+@mixin henris-check-icon($el: '.input-check-icon') {
+	#{$base-prefix}#{$el} {
+		width: auto;
+		height: auto;
+		padding: 0;
+		margin: 0;
+		@content;
+		label {
+			position: relative;
+			display: block;
+			min-width: 2.5em;
+			line-height: 2.5;
+			margin-top: 0;
+			padding: 0;
+			padding-left: 2.5em;
+			&::after,
+			&::before {
+				content: '';
+			}
+		}
+		input[type='checkbox'],
+		input[type='radio'] {
+			position: absolute;
+			width: 0;
+			height: 0;
+			opacity: 0;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		label::before {
+			position: absolute;
+			top: 0.5em;
+			left: 0;
+			display: block;
+			width: 2.5em;
+			height: 2.5em;
+			box-shadow: 0 0 0 1px color(Black, 0.15);
+			border-radius: $base-border-radius;
+			line-height: 2.5em;
+			text-align: center;
+			text-indent: 0;
+		}
+
+		label::after {
+			position: absolute;
+			top: 1em;
+			left: 0.5em;
+			display: block;
+			width: 0.5em;
+			height: 0.5em;
+			background-color: white;
+			transform: scale(0);
+		}
+		input:checked {
+			& + label::before {
+				background-color: color(Black);
+				color: color(White);
+				// transform: scale(1);
+			}
+		}
+		&.input-check--nolabel {
+			display: inline-block;
+			width: 2.5rem;
+			text-indent: -999em;
+			margin: 0.25rem;
+			&::before {
+				top: 0 !important;
+				text-indent: 0;
+			}
+			& + .input-check--nolabel {
+				margin: 0.25rem;
+			}
+		}
+	}
+}
+
+@if output(form-check-icon) {
+	@include henris-check-icon();
+}

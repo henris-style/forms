@@ -1,0 +1,101 @@
+@mixin henris-check-color($el: '.input-check-color') {
+	#{$base-prefix}#{$el} {
+		width: auto;
+		height: auto;
+		padding: 0;
+		margin: 0;
+		@content;
+		label {
+			position: relative;
+			display: block;
+			line-height: 2;
+			margin-top: 0;
+			padding: 0;
+			padding-left: 2rem;
+			&::after,
+			&::before {
+				content: '';
+			}
+		}
+		input[type='checkbox'],
+		input[type='radio'] {
+			position: absolute;
+			width: 0;
+			height: 0;
+			opacity: 0;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			margin: 0;
+			padding: 0;
+			&:focus {
+				label::before {
+					box-shadow: 0 2px 0 0 #{$form-accent-color};
+				}
+			}
+		}
+
+		label::before {
+			position: absolute;
+			top: 0.25em;
+			left: 0;
+			display: block;
+			width: 1.5em;
+			height: 1.5em;
+			box-shadow: 0 2px 0 0 #{$form-shadow-color};
+			border-radius: 50%;
+			background-color: #{$form-accent-color};
+		}
+
+		label::after {
+			position: absolute;
+			top: 0.75em;
+			left: 0.5em;
+			display: block;
+			width: 0.5em;
+			height: 0.5em;
+			border-radius: 50%;
+			background-color: #{$form-body-color};
+			transform: scale(0);
+		}
+		input:checked {
+			& + label::after {
+				animation: inputCheckColorPop 0.3s forwards;
+			}
+		}
+	}
+	@keyframes inputCheckColorPop {
+		0% {
+			transform: scale(0);
+		}
+		75% {
+			transform: scale(1.2);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+	@if output('form-input-colored') {
+		@each $colorName, $colorValue in $colors {
+			#{$base-prefix}#{$el}--#{$colorName} {
+				label::before {
+					box-shadow: 0 2px 0 0 var(--check-color, #{darken($colorValue, 20%)});
+					background-color: var(--check-color, #{$colorValue});
+				}
+				label::after {
+					background-color: contra($colorName);
+				}
+			}
+		}
+	}
+	#{$base-prefix}#{$el}--nolabel,
+	.input-check--nolabel {
+		label {
+			text-indent: -999em;
+		}
+	}
+}
+
+@if output(form-check-color) {
+	@include henris-check-color();
+}
