@@ -1,0 +1,97 @@
+@mixin input-body {
+	@include input-element("body") {
+		@content;
+	}
+}
+@mixin input-checkbox-body {
+	@include input-element("body", "checkbox") {
+		@content;
+	}
+}
+@mixin input-radio-body {
+	@include input-element("body", "radio") {
+		@content;
+	}
+}
+
+@mixin input-label {
+	@include input-element("label") {
+		@content;
+	}
+}
+@mixin input-radio-label {
+	@include input-element("label", "radio") {
+		@content;
+	}
+}
+@mixin input-checkbox-label {
+	@include input-element("label", "checkbox") {
+		@content;
+	}
+}
+@mixin input-focus {
+	@include input-element("focus") {
+		@content;
+	}
+}
+@mixin input-radio-focus {
+	@include input-element("focus", "radio") {
+		@content;
+	}
+}
+@mixin input-checkbox-focus {
+	@include input-element("focus", "checkbox") {
+		@content;
+	}
+}
+
+@mixin input-check {
+	@include input-element("check") {
+		@content;
+	}
+}
+@mixin input-radio-check {
+	@include input-element("check", "radio") {
+		@content;
+	}
+}
+@mixin input-checkbox-check {
+	@include input-element("check", "checkbox") {
+		@content;
+	}
+}
+@mixin input-checkbox-check-checked {
+	@include input-element("check-checked", "checkbox") {
+		@content;
+	}
+}
+@mixin input-body-checked {
+	@include input-element("body-checked") {
+		@content;
+	}
+}
+@mixin input-radio-body-checked {
+	@include input-element("body-checked", "radio") {
+		@content;
+	}
+}
+@mixin input-checkbox-body-checked {
+	@include input-element("body-checked", "checkbox") {
+		@content;
+	}
+}
+@mixin input-label-checked {
+	@include input-element("label-checked") {
+		@content;
+	}
+}
+@mixin input-radio-label-checked {
+	@include input-element("label-checked", "radio") {
+		@content;
+	}
+}
+@mixin input-checkbox-label-checked {
+	@include input-element("label-checked", "checkbox") {
+		@content;
+	}
+}

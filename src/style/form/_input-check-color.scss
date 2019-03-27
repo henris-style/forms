@@ -75,7 +75,7 @@
 			transform: scale(1);
 		}
 	}
-	@if output('form-input-colored') {
+	@if output('form-input-colored') and variable-exists(colors) {
 		@each $colorName, $colorValue in $colors {
 			#{$base-prefix}#{$el}--#{$colorName} {
 				label::before {

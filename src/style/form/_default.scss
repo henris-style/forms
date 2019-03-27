@@ -51,7 +51,6 @@ $form-accent-color: var(
 		transition: opacity 0.3s;
 	}
 	&:focus {
-		
 		background: var(--form-body-focus, #{$form-body-color});
 		color: var(
 			--form-text-color-focus,
@@ -63,7 +62,7 @@ $form-accent-color: var(
 	&:focus,
 	&:focus:hover {
 		&::placeholder {
-			opacity: 0; 
+			opacity: 0;
 		}
 	}
 	&:hover {
@@ -78,12 +77,14 @@ $form-accent-color: var(
 @mixin henris-input-ghost() {
 	background-color: transparent;
 	color: currentColor;
-	@if output('form-input-colored') {
-		@each $color-name, $color-value in $colors {
-			.bg-#{to-lower-case($color-name)} &,
-			.bg-#{$color-name} & {
-				border-color: contra($color-name);
-				color: contra($color-name);
+	@if variable-exists(colors) {
+		@if output('form-input-colored') {
+			@each $color-name, $color-value in $colors {
+				.bg-#{to-lower-case($color-name)} &,
+				.bg-#{$color-name} & {
+					border-color: contra($color-name);
+					color: contra($color-name);
+				}
 			}
 		}
 	}

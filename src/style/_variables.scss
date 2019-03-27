@@ -1,12 +1,27 @@
-//
-// Sets the default variables for colors.
-$color-dark: color(Black) !default;
-$color-light: color(White) !default;
-$primary-color: color(Purple) !default;
-$secondary-color: color(Blue) !default;
-$tertiary-color: color(Pink) !default;
-$color-link: color(Blue) !default;
-$color-info: color(Turquoise) !default;
-$color-success: color(Green) !default;
-$color-warning: color(Orange) !default;
-$color-danger: color(Red) !default;
+// Variables
+
+$input-types: (
+	(button, button),
+	(checkbox, check),
+	(color, button),
+	(date, button),
+	(datetime, text),
+	(datetime-local, text),
+	(email, text),
+	(file, text),
+	(hidden, hidden),
+	(image, text),
+	(month, text),
+	(number, text),
+	(password, text),
+	(radio, radio),
+	(range, slider),
+	(reset, button),
+	(search, text),
+	(submit, button),
+	(tel, text),
+	(text, text),
+	(time, text),
+	(url, text),
+	(week, text)
+);

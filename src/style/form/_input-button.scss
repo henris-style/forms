@@ -3,8 +3,9 @@
 	input[type='reset'],
 	input[type='submit'] {
 		// margin-top: 1rem;
-		@if output('button') {
+		@if output('button') and mixin-exists(henris-button-default) {
 			&:not(.button) {
+				
 				@include henris-button-default();
 			}
 		}

@@ -1,3 +1,58 @@
+@mixin input-radio(
+	$width: 1rem,
+	$height: 1rem,
+	$margin: 0,
+	$spacing: 0.2rem,
+	$bg-body: color(White),
+	$bg-check: color(Black),
+	$round: 100%
+) {
+	& {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
+	@include parent {
+		input[type="radio"] + label {
+			padding-left: $width + $margin;
+			position: relative;
+			cursor: pointer;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				width: $width;
+				height: $height;
+				background: $bg-body;
+				@if $round != 0 {
+					border-radius: $round;
+				}
+			}
+			&::after {
+				content: "";
+				position: absolute;
+				top: $spacing;
+				left: $spacing;
+				display: block;
+				width: ($width - ($spacing * 2));
+				height: ($width - ($spacing * 2));
+				border-radius: $round;
+				background: $bg-check;
+				opacity: 0;
+				transition: $base-transition;
+			}
+		}
+		input[type="radio"]:checked {
+			& + label::after {
+				opacity: 1;
+				transition: $base-transition;
+			}
+		}
+	}
+}
+
 @if output(form-radio) {
 	[type='radio'] {
 		width: auto;

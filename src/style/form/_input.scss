@@ -1,6 +1,6 @@
-@mixin henris-input($el: 'input-field'){
+@mixin henris-input($el: 'input-field') {
 	.#{$base-prefix}#{$el} {
-		input {			
+		input {
 			&[type='text'],
 			&[type='date'],
 			&[type='datetime-local'],
@@ -36,7 +36,9 @@
 			&[type='submit'],
 			&[type='reset'],
 			&[type='button'] {
-				@include henris-button-default();
+				@if mixin-exists(henris-button-default) {
+					@include henris-button-default();
+				}
 			}
 		}
 
@@ -55,7 +57,7 @@
 				}
 			}
 		}
-		label{
+		label {
 			@include henris-label();
 		}
 	}
