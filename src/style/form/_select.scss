@@ -1,17 +1,16 @@
-$select-arrow-size: 0.3rem !default;
 @mixin henris-select($el: 'select') {
 	#{$base-prefix}#{$el} {
 		@include henris-input-default();
 		padding-right: 3rem;
 		background-image: linear-gradient(
 				to right bottom,
-				currentColor 50%,
+				#{$select-arrow-color} 50%,
 				transparent 50%
 			),
-			linear-gradient(to left bottom, currentColor 50%, transparent 50%);
+			linear-gradient(to left bottom, #{$select-arrow-color} 50%, transparent 50%);
 		background-repeat: no-repeat;
 		background-position: top 50% right 1rem,
-			top 50% right calc(#{(1rem + $select-arrow-size)} - 1px);
+			top 50% right calc((1rem + $select-arrow-size) - 1px);
 		background-size: #{$select-arrow-size} #{$select-arrow-size},
 			#{$select-arrow-size} #{$select-arrow-size};
 		-webkit-appearance: none;
@@ -46,29 +45,29 @@ $select-arrow-size: 0.3rem !default;
 	@keyframes selectArrow {
 		0% {
 			background-position: top 50% right 1rem,
-				top 50% right calc(#{(1rem + $select-arrow-size)} - 1px);
+				top 50% right calc((1rem + $select-arrow-size) - 1px);
 		}
 		50% {
 			background-position: top 60% right 1rem,
-				top 60% right calc(#{(1rem + $select-arrow-size)} - 1px);
+				top 60% right calc((1rem + $select-arrow-size) - 1px);
 		}
 		0% {
 			background-position: top 50% right 1rem,
-				top 50% right calc(#{(1rem + $select-arrow-size)} - 1px);
+				top 50% right calc((1rem + $select-arrow-size) - 1px);
 		}
 	}
 	@keyframes selectArrowSized {
 		0% {
 			background-position: top 50% right 1rem,
-				calc(100% - 1.25rem) right calc(#{(1rem + $select-arrow-size)} - 1px);
+				calc(100% - 1.25rem) right calc((1rem + $select-arrow-size) - 1px);
 		}
 		50% {
 			background-position: top 60% right 1rem,
-				calc(100% - 2.5rem) right calc(#{(1rem + $select-arrow-size)} - 1px);
+				calc(100% - 2.5rem) right calc((1rem + $select-arrow-size) - 1px);
 		}
 		0% {
 			background-position: top 50% right 1rem,
-				calc(100% - 1.25rem) right calc(#{(1rem + $select-arrow-size)} - 1px);
+				calc(100% - 1.25rem) right calc((1rem + $select-arrow-size) - 1px);
 		}
 	}
 

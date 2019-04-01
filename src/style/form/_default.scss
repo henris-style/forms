@@ -1,77 +1,40 @@
-$form-body-color: var(--form-body, var(--color-light, #{$base-color-light}));
-$form-border-color: var(
-	--form-border-color,
-	var(--color-dark, #{rgba($base-color-dark, 0.25)})
-);
-$form-border-hover-color: var(
-	--form-border-color,
-	var(--color-dark, #{rgba($base-color-dark, 0.5)})
-);
-$form-border-focus-color: var(
-	--form-border-focus,
-	var(--color-dark, #{$base-color-primary})
-);
-$form-border-width: var(
-	--form-border-width,
-	var(--border-width, #{$form-input-border-width})
-);
-$form-border-radius: var(
-	--form-border-radius,
-	var(--border-radius, #{$form-input-border-radius})
-);
-$form-outline-focus: var(--outline-focus, var(--form-outline-focus));
-$form-shadow-color: var(
-	--form-shadow,
-	var(--color-shadow, #{$base-color-shadow})
-);
-$form-accent-color: var(
-	--form-accent,
-	var(--color-primary, #{$base-color-primary})
-);
-
 @mixin henris-input-default() {
 	max-width: 100%;
-	border-width: #{$form-border-width};
-	border-style: solid;
-	border-color: #{$form-border-color};
-	border-radius: #{$form-border-radius};
-	background: #{$form-body-color};
+	border-width: $form-border-width;
+	border-style: $form-border-style;
+	border-color: $form-border-color;
+	border-radius: $form-border-radius;
+	background: $form-body-color;
 	font-size: 1rem;
 	font-family: inherit;
-	line-height: var(--form-input-line-height, #{$form-input-line-height});
+	line-height: $form-input-line-height;
 	-webkit-appearance: none;
-	padding: var(--form-input-padding, #{$form-input-padding});
-	color: var(--form-text-color, #{$form-input-text-color});
+	padding: $form-input-padding;
+	color: $form-text-color;
 	&::placeholder {
-		color: var(
-			--form-text-color-placeholder,
-			var(--form-text-color, #{$form-input-text-color})
-		);
+		color: $form-text-placeholder-color;
 		opacity: 0.5;
 		transition: opacity 0.3s;
 	}
 	&:focus {
-		background: var(--form-body-focus, #{$form-body-color});
-		color: var(
-			--form-text-color-focus,
-			var(--form-text-color, #{$form-input-text-color})
-		);
-		border-color: #{$form-border-focus-color};
-		outline: #{$form-outline-focus};
+		background: $form-body-focus;
+		color: $form-text-focus-color;
+		border-color: $form-border-focus-color;
+		outline: $form-outline-focus;
 	}
 	&:focus,
 	&:focus:hover {
+		background: $form-body-focus-hover;
+		color: $form-text-focus-hover-color;
+		border-color: $form-border-focus-hover-color;
 		&::placeholder {
 			opacity: 0;
 		}
 	}
 	&:hover {
-		background: var(--form-body-hover, #{$form-body-color});
-		color: var(
-			--form-text-color-hover,
-			var(--form-text-color, #{$form-input-text-color})
-		);
-		border-color: #{$form-border-hover-color};
+		background: $form-body-hover;
+		color: $form-text-hover-color;
+		border-color: $form-border-hover-color;
 	}
 }
 @mixin henris-input-ghost() {

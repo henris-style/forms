@@ -61,6 +61,9 @@
 			@include henris-label();
 		}
 	}
+	& + #{$el}{
+		margin-top: 2rem;
+	}
 }
 @if output(form-input) {
 	@include henris-input();
