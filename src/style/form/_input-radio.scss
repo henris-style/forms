@@ -12,6 +12,12 @@
 		height: 0;
 		opacity: 0;
 	}
+	
+	$width: to-rem($width);
+	$height: to-rem($height);
+	$margin: to-rem($margin);
+	$spacing: to-rem($spacing);
+
 	@include parent {
 		input[type="radio"] + label {
 			padding-left: $width + $margin;

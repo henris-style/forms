@@ -61,7 +61,7 @@
 			@include henris-label();
 		}
 	}
-	& + #{$el}{
+	.#{$base-prefix}#{$el}  + .#{$base-prefix}#{$el} {
 		margin-top: 2rem;
 	}
 }
