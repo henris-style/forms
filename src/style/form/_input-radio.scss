@@ -7,16 +7,16 @@
 	$bg-check: color(Black),
 	$round: 100%
 ) {
-	& {
-		width: 0;
-		height: 0;
-		opacity: 0;
-	}
 	
 	$width: to-rem($width);
 	$height: to-rem($height);
 	$margin: to-rem($margin);
 	$spacing: to-rem($spacing);
+	& {
+		width: 0;
+		height: 0;
+		opacity: 0;
+	}
 
 	@include parent {
 		input[type="radio"] + label {
@@ -114,10 +114,10 @@
 		height: 1rem;
 		border: #{$form-border-width} solid #{$form-border-color};
 		border-radius: 50%;
-		opacity: 1;
 		-webkit-appearance: radio;
 		-moz-appearance: radio;
 		appearance: radio;
+		opacity: 1;
 	}
 }
 

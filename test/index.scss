@@ -1,9 +1,11 @@
 // Import Utils
 @import '../node_modules/@henris/default/index.scss';
 @import '../node_modules/@henris/utils/index.scss';
-@import '../src/functions/index.scss';
+@import '../src/index.scss';
 
 // Import Ssst test suite
 @import '../node_modules/ssst/index.scss';
 
-@debug 'make some tests!';
+.element{
+@include input-range();
+}
