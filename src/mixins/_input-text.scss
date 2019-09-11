@@ -1,3 +1,4 @@
+// Styling for the input element
 $input-text-input-width: var(--input-text-input-width, 100%);
 $input-text-input-shadow: var(--input-text-input-shadow, 0 0 1rem 0 rgba(0,0,0,0));
 $input-text-input-focus-shadow: var(--input-text-input-shadow, 0 0 1rem 0 rgba(0,0,0,0.25));
@@ -10,6 +11,7 @@ $input-text-input-padding: var(--input-text-input-padding, 1em);
 $input-text-input-opacity: var(--input-text-input-opacity, 1);
 $input-text-input-transition: var(--input-text-input-transition, 0.3s ease-in-out);
 
+// Styling for the label
 $input-text-label-width: var(--input-text-label-width, 100%);
 $input-text-label-shadow: var(--input-text-label-shadow, 0 0 1rem 0 rgba(0,0,0,0));
 $input-text-label-border: var(--input-text-label-border, 0);
@@ -21,11 +23,12 @@ $input-text-label-padding: var(--input-text-label-padding, 1em);
 $input-text-label-opacity: var(--input-text-label-opacity, 0.75);
 $input-text-label-transition: var(--input-text-label-transition, 0.3s ease-in-out);
 
-$input-text-label-focus-opacity: var(--input-text-label-focus-opacity, 1);
+// Styling for the pseudo elements or depending on$input-text-label-focus-opacity: var(--input-text-label-focus-opacity, 1);
 $input-text-label-filled-opacity: var(--input-text-label-filled-opacity, 1);
 $input-text-placeholder-focus-opacity: var(--input-text-placeholder-focus-opacity,0.5);
 
-$input-text-container-position: var(--input-text-container-position, 100%);
+// Styling for the container of the inputs
+$input-text-container-position: var(--input-text-container-position, relative);
 $input-text-container-width: var(--input-text-container-width, 100%);
 $input-text-container-reverse: true;
 $input-text-container-margin: var(--input-text-container-margin, 1em);
@@ -73,24 +76,24 @@ $input-text-container-margin: var(--input-text-container-margin, 1em);
 		box-shadow:$input-text-input-shadow;
 		border: $input-text-input-border;
 		background-color:$input-text-input-background;
+		color: $input-text-input-color;
 		font-size:$input-text-input-font-size;
 		font-family: $input-text-input-font-family;
-		padding: $input-text-input-padding;
-		color: $input-text-input-color;
 		opacity: $input-text-input-opacity;
 		transition: $input-text-input-transition;
+		padding: $input-text-input-padding;
 	}
 	@include input-text-label($types) {
 		width: $input-text-label-width;
 		box-shadow:$input-text-label-shadow;
 		border: $input-text-label-border;
 		background-color:$input-text-label-background;
+		color: $input-text-label-color;
 		font-size:$input-text-label-font-size;
 		font-family: $input-text-label-font-family;
-		padding: $input-text-label-padding;
-		color: $input-text-label-color;
 		opacity: $input-text-label-opacity;
 		transition: $input-text-label-transition;
+		padding: $input-text-label-padding;
 	}
 	@include input-text-focus($types) {
 		z-index: 2;
@@ -115,8 +118,8 @@ $input-text-container-margin: var(--input-text-container-margin, 1em);
 		#{$class}{	
 			position: $input-text-container-position;
 			z-index: 1;
-			width: $input-text-container-width;
 			display: flex;
+			width: $input-text-container-width;
 			@if $input-text-container-reverse{
 				flex-flow: row-reverse;
 			}
@@ -180,5 +183,11 @@ $input-text-container-margin: var(--input-text-container-margin, 1em);
 		& + label{
 			@content;
 		}
+	}
+}
+
+@if output(('form','form-text')){
+	.input-text {
+		@include input-text();
 	}
 }

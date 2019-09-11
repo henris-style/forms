@@ -198,6 +198,7 @@ $input-form-label-padding-left: var(--input-form-label-padding-left, calc(#{$inp
 		position: absolute;
 		top:  $input-form-body-top; 
 		left:$input-form-body-left;
+		box-sizing: border-box;
 		display: block; 
 		width: $input-form-body-width;
 		height: $input-form-body-height;
@@ -230,9 +231,13 @@ $input-form-label-padding-left: var(--input-form-label-padding-left, calc(#{$inp
 	}
 }
 
-.input-checkbox {
-	@include input-checkbox();
+@if output(('form','form-checkbox')){
+	.input-checkbox {
+		@include input-checkbox();
+	}
 }
-.input-radio {
-	@include input-radio();
+@if output(('form','form-radio')){
+	.input-radio {
+		@include input-radio();
+	}
 }

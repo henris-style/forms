@@ -1,3 +1,28 @@
+// Styling for the range element
+$input-range-width: var(--input-range-width, 100%) !default;
+$input-range-height: var(--input-range-height, 1rem) !default;
+$input-range-shadow: var(--input-range-shadow, 1px 1px 3px rgba(black, 0.25 ) inset) !default;
+$input-range-border: var(--input-range-border, 0) !default;
+$input-range-border-radius: var(--input-range-border-radius, 50%) !default;
+$input-range-background: var(--input-range-background, transparent) !default;
+
+// Styling for the range thumb
+$input-range-thumb-width:var(--input-range-thumb-width, 1rem) !default;
+$input-range-thumb-height:var(--input-range-thumb-height, 1rem) !default;
+$input-range-thumb-shadow: var(--input-range-thumb-shadow, #{$input-range-shadow}) !default;
+$input-range-thumb-border: var(--input-range-thumb-border, 0) !default;
+$input-range-thumb-border-radius: var(--input-range-thumb-border-radius, 50%) !default;
+$input-range-thumb-background: var(--input-range-thumb-background, blue) !default;
+
+// Styling for the range track
+$input-range-track-width: var(--input-range-width, auto) !default;
+$input-range-track-height: var(--input-range-height, 0.5rem) !default;
+$input-range-track-shadow: var(--input-range-track-shadow, #{$input-range-shadow}) !default;
+$input-range-track-border: var(--input-range-thumb-border, 0) !default;
+$input-range-track-border-radius: var(--input-range-thumb-border-radius, 50%) !default;
+$input-range-track-background: var(--input-range-thumb-background, white) !default;
+
+
 @mixin input-range-thumb {
 	&::-webkit-slider-thumb {
 		@content;
@@ -20,27 +45,6 @@
 		@content;
 	}
 }
-$input-range-width: var(--input-range-width, 100%) !default;
-$input-range-height: var(--input-range-height, 1rem) !default;
-$input-range-shadow: var(--input-range-shadow, 1px 1px 3px rgba(black, 0.25 ) inset) !default;
-$input-range-border: var(--input-range-border, 0) !default;
-$input-range-border-radius: var(--input-range-border-radius, 50%) !default;
-$input-range-background: var(--input-range-background, transparent) !default;
-
-$input-range-thumb-width:var(--input-range-thumb-width, 1rem) !default;
-$input-range-thumb-height:var(--input-range-thumb-height, 1rem) !default;
-$input-range-thumb-shadow: var(--input-range-thumb-shadow, #{$input-range-shadow}) !default;
-$input-range-thumb-border: var(--input-range-thumb-border, 0) !default;
-$input-range-thumb-border-radius: var(--input-range-thumb-border-radius, 50%) !default;
-$input-range-thumb-background: var(--input-range-thumb-background, blue) !default;
-
-$input-range-track-width: var(--input-range-width, auto) !default;
-$input-range-track-height: var(--input-range-height, 0.5rem) !default;
-$input-range-track-shadow: var(--input-range-track-shadow, #{$input-range-shadow}) !default;
-$input-range-track-border: var(--input-range-thumb-border, 0) !default;
-$input-range-track-border-radius: var(--input-range-thumb-border-radius, 50%) !default;
-$input-range-track-background: var(--input-range-thumb-background, white) !default;
-
 
 @mixin input-range($class: null) {
 	#{$class}[type='range'] {
@@ -112,5 +116,10 @@ $input-range-track-background: var(--input-range-thumb-background, white) !defau
 				opacity: 0.5;
 			}
 		}
+	}
+}
+@if output(('form','form-range')){
+	.input-range {
+		@include input-range();
 	}
 }
