@@ -7,5 +7,6 @@
 @import '../node_modules/ssst/index.scss';
 
 .element{
-@include input-range();
+	@include input-range();
+	@include input-text-container('.test-element');
 }
