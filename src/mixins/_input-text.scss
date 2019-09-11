@@ -193,9 +193,3 @@ $input-text-container-margin: var(--input-text-container-margin, 1em) !default;
 		}
 	}
 }
-
-@if output(('form','form-text')){
-	.input-text {
-		@include input-text();
-	}
-}

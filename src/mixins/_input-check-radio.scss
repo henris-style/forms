@@ -203,11 +203,11 @@ $input-form-label-padding-left: var(--input-form-label-padding-left, calc(#{$inp
 		position: absolute;
 		top:  $input-form-body-top; 
 		left:$input-form-body-left;
-		box-sizing: border-box;
 		display: block; 
 		width: $input-form-body-width;
 		height: $input-form-body-height;
 		box-shadow: $input-form-body-shadow;
+		box-sizing: border-box;
 		border: $input-form-body-border;
 		border-radius: $input-form-body-border-radius;
 		background: $input-form-body-background;
@@ -233,16 +233,5 @@ $input-form-label-padding-left: var(--input-form-label-padding-left, calc(#{$inp
 	}
 	@include input-form-check-checked($type)  {
 		transform: scale(1);
-	}
-}
-
-@if output(('form','form-checkbox')){
-	.input-checkbox {
-		@include input-checkbox();
-	}
-}
-@if output(('form','form-radio')){
-	.input-radio {
-		@include input-radio();
 	}
 }

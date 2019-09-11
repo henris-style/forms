@@ -118,8 +118,3 @@ $input-range-track-background: var(--input-range-thumb-background, white) !defau
 		}
 	}
 }
-@if output(('form','form-range')){
-	.input-range {
-		@include input-range();
-	}
-}
