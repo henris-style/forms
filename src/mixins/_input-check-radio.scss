@@ -67,6 +67,11 @@ $input-form-label-padding-left: var(--input-form-label-padding-left, calc(#{$inp
 		@content;
 	}
 }
+@mixin input-form-focus($type) {
+	input[type='#{$type}']:focus + label {
+		@content;
+	}
+}
 @mixin input-form-input($type) {
 	input[type='#{$type}'] {
 		@content;
@@ -221,7 +226,7 @@ $input-form-label-padding-left: var(--input-form-label-padding-left, calc(#{$inp
 		height: $input-form-check-height;
 		background-color:  $input-form-check-background;
 		transform: scale(0);
-		transition: $input-form-check-background;
+		transition: $input-form-check-transition;
 		@if $type == 'radio' {
 			border-radius: $input-radio-check-border-radius;
 		}
