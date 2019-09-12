@@ -1,0 +1,21 @@
+@if output(('form', 'form-checkbox')) {
+	.#{$base-prefix}input-checkbox {
+		@include input-checkbox();
+	}
+}
+@if output(('form', 'form-radio')) {
+	.#{$base-prefix}input-radio {
+		@include input-radio();
+	}
+}
+@if output(('form', 'form-range')) {
+	.#{$base-prefix}input-range {
+		@include input-range();
+	}
+}
+@if output(('form', 'form-input')) {
+	.#{$base-prefix}input-input,
+	.#{$base-prefix}input-text {
+		@include input-text();
+	}
+}

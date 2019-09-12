@@ -127,6 +127,7 @@ $input-range-max-label: true !default;
 	//	Thumb styling
 	//
 	@include input-range-thumb($class) {
+		position: relative;
 		width: $input-range-thumb-width;
 		height: $input-range-thumb-height;
 		box-shadow: $input-range-thumb-shadow;
@@ -135,7 +136,6 @@ $input-range-max-label: true !default;
 		border-radius: $input-range-thumb-border-radius;
 		background: $input-range-thumb-background;
 		appearance: none;
-		position: relative;
 	}
 
 	//
@@ -196,21 +196,21 @@ $input-range-max-label: true !default;
 	}
 	@if $input-range-min-label {
 		@include input-range-min-label($class) {
+			content: attr(min);
 			position: absolute;
 			bottom: 0;
-			display: block;
 			left: 0;
-			content: attr(min);
+			display: block;
 		}
 	}
 
 	@if $input-range-max-label {
 		@include input-range-max-label($class) {
+			content: attr(max);
 			position: absolute;
+			right: 0;
 			bottom: 0;
 			display: block;
-			right: 0;
-			content: attr(max);
 		}
 	}
 }
