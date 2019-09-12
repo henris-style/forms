@@ -210,8 +210,8 @@ $input-range-min-label-transform: var(--input-range-max-label-transform, transla
 			position: absolute;
 			top: 50%;
 			right: 100%;
-			transform: translateY(-50%);
 			display: block;
+			transform: translateY(-50%);
 		}
 	}
 
@@ -221,8 +221,8 @@ $input-range-min-label-transform: var(--input-range-max-label-transform, transla
 			position: absolute;
 			top: $input-range-max-label-top;
 			left:$input-range-max-label-left;
-			transform:$input-range-max-label-transform;
 			display: block;
+			transform:$input-range-max-label-transform;
 			padding: $input-range-max-label-padding;
 		}
 	}

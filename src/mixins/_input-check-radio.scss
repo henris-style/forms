@@ -170,6 +170,11 @@ $input-form-label-padding-left: var(
 		@content;
 	}
 }
+@mixin input-checkbox-focus($class: null) {
+	@include input-form-focus($class, 'checkbox') {
+		@content;
+	}
+}
 @mixin input-checkbox-body($class: null) {
 	@include input-form-body($class: null 'checkbox') {
 		@content;
@@ -182,6 +187,11 @@ $input-form-label-padding-left: var(
 }
 @mixin input-checkbox-label($class: null) {
 	@include input-form-label('checkbox') {
+		@content;
+	}
+}
+@mixin input-checkbox-label-focus($class: null) {
+	@include input-form-label-focus('checkbox') {
 		@content;
 	}
 }
@@ -217,6 +227,11 @@ $input-form-label-padding-left: var(
 		@content;
 	}
 }
+@mixin input-radio-focus($class: null) {
+	@include input-form($class, 'radio') {
+		@content;
+	}
+}
 @mixin input-radio-body($class: null) {
 	@include input-form-body($class, 'radio') {
 		@content;
@@ -229,6 +244,11 @@ $input-form-label-padding-left: var(
 }
 @mixin input-radio-label($class: null) {
 	@include input-form-label($class, 'radio') {
+		@content;
+	}
+}
+@mixin input-radio-label-focus($class: null) {
+	@include input-form-label-focus($class, 'radio') {
 		@content;
 	}
 }
