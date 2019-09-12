@@ -1,102 +1,180 @@
+/* prettier-ignore */
 // Styling for the range element
 $input-range-width: var(--input-range-width, 100%) !default;
-$input-range-height: var(--input-range-height, 1rem) !default;
-$input-range-shadow: var(--input-range-shadow, 1px 1px 3px rgba(black, 0.25 ) inset) !default;
+$input-range-shadow: var(--input-range-shadow, none) !default;
 $input-range-border: var(--input-range-border, 0) !default;
 $input-range-border-radius: var(--input-range-border-radius, 50%) !default;
 $input-range-background: var(--input-range-background, transparent) !default;
+$input-range-padding: var(--input-range-padding, 1em 0);
 
 // Styling for the range thumb
-$input-range-thumb-width:var(--input-range-thumb-width, 1rem) !default;
-$input-range-thumb-height:var(--input-range-thumb-height, 1rem) !default;
-$input-range-thumb-shadow: var(--input-range-thumb-shadow, #{$input-range-shadow}) !default;
-$input-range-thumb-border: var(--input-range-thumb-border, 0) !default;
-$input-range-thumb-border-radius: var(--input-range-thumb-border-radius, 50%) !default;
-$input-range-thumb-background: var(--input-range-thumb-background, blue) !default;
+$input-range-thumb-width: var(--input-range-thumb-width, 1rem) !default;
+$input-range-thumb-height: var(--input-range-thumb-height, 1rem) !default;
+$input-range-thumb-shadow: var(
+	--input-range-thumb-shadow,
+	#{$input-range-shadow}
+) !default;
+$input-range-thumb-border: var(
+	--input-range-thumb-border,
+	1px solid rgba(0, 0, 0, 1)
+) !default;
+$input-range-thumb-border-radius: var(
+	--input-range-thumb-border-radius,
+	50%
+) !default;
+$input-range-thumb-background: var(
+	--input-range-thumb-background,
+	rgba(255, 255, 255, 1)
+) !default;
 
 // Styling for the range track
 $input-range-track-width: var(--input-range-width, auto) !default;
 $input-range-track-height: var(--input-range-height, 0.5rem) !default;
-$input-range-track-shadow: var(--input-range-track-shadow, #{$input-range-shadow}) !default;
+$input-range-track-shadow: var(
+	--input-range-track-shadow,
+	#{$input-range-shadow}
+) !default;
 $input-range-track-border: var(--input-range-thumb-border, 0) !default;
-$input-range-track-border-radius: var(--input-range-thumb-border-radius, 50%) !default;
-$input-range-track-background: var(--input-range-thumb-background, white) !default;
+$input-range-track-border-radius: var(
+	--input-range-thumb-border-radius,
+	calc(#{$input-range-track-height} / 2)
+) !default;
+$input-range-track-background: var(
+	--input-range-thumb-background,
+	rgba(0, 0, 0, 0.25)
+) !default;
 
+$input-range-label-width: var(--input-range-label-width, 10em) !default;
+$input-range-label-padding: var(
+	--input-range-padding,
+	#{$input-range-padding}
+) !default;
 
-@mixin input-range-thumb {
-	&::-webkit-slider-thumb {
-		@content;
-	}
-	&::-moz-range-thumb {
-		@content;
-	}
-	&::-ms-thumb {
+// Showing labels and settings
+$input-range-container-reverse: true !default;
+$input-range-min-label: true !default;
+$input-range-max-label: true !default;
+
+@mixin input-range-input($class: null) {
+	#{$class}[type='range'] {
 		@content;
 	}
 }
-@mixin input-range-track {
-	&::-webkit-slider-runnable-track {
-		@content;
+@mixin input-range-label($class: null) {
+	@include input-range-input($class) {
+		& + label {
+			@content;
+		}
 	}
-	&::-moz-range-track {
-		@content;
+}
+
+@mixin input-range-thumb($class: null) {
+	@include input-range-input($class) {
+		&::-webkit-slider-thumb {
+			@content;
+		}
+		&::-moz-range-thumb {
+			@content;
+		}
+		&::-ms-thumb {
+			@content;
+		}
 	}
-	&::-ms-track {
-		@content;
+}
+@mixin input-range-track($class: null) {
+	@include input-range-input($class) {
+		&::-webkit-slider-runnable-track {
+			@content;
+		}
+		&::-moz-range-track {
+			@content;
+		}
+		&::-ms-track {
+			@content;
+		}
+	}
+}
+
+@mixin input-range-min-label($class: null) {
+	@include input-range-input($class) {
+		&::before {
+			@content;
+		}
+	}
+}
+@mixin input-range-max-label($class: null) {
+	@include input-range-input($class) {
+		&::after {
+			@content;
+		}
 	}
 }
 
 @mixin input-range($class: null) {
-	#{$class}[type='range'] {
+	@include input-range-input($class) {
+		position: relative;
 		width: $input-range-width;
-		height: $input-range-height; 
-		border: $input-range-border; 
-		outline: 0; 
+		border: $input-range-border;
+		outline: 0;
 		background: $input-range-background;
 		appearance: none;
-		cursor: pointer; 
+		cursor: pointer;
 		-webkit-tap-highlight-color: transparent;
-		padding: 0;
+		padding: $input-range-padding;
+	}
 
-		//
-		//	Thumb styling
-		//
-		@include input-range-thumb {
-			width: $input-range-thumb-width;
-			height: $input-range-thumb-height;
-			box-shadow: $input-range-thumb-shadow;
-			box-sizing: border-box;
-			border: $input-range-thumb-border;
-			border-radius: $input-range-thumb-border-radius;
-			background: $input-range-thumb-background;
-			appearance: none;
-		}
+	//
+	//	Thumb styling
+	//
+	@include input-range-thumb($class) {
+		width: $input-range-thumb-width;
+		height: $input-range-thumb-height;
+		box-shadow: $input-range-thumb-shadow;
+		box-sizing: border-box;
+		border: $input-range-thumb-border;
+		border-radius: $input-range-thumb-border-radius;
+		background: $input-range-thumb-background;
+		appearance: none;
+		position: relative;
+	}
 
-		//
-		//	Track styling
-		//
-		@include input-range-track {
-			width: $input-range-track-width;
-			height: $input-range-track-height;
-			box-shadow: $input-range-track-shadow;
-			border: $input-range-track-border;
-			border-radius: $input-range-track-border-radius;
-			background:  $input-range-track-background;
-			color: transparent;
-		}
+	//
+	//	Track styling
+	//
+	@include input-range-track($class) {
+		width: $input-range-track-width;
+		height: $input-range-track-height;
+		box-shadow: $input-range-track-shadow;
+		border: $input-range-track-border;
+		border-radius: $input-range-track-border-radius;
+		background: $input-range-track-background;
+		color: transparent;
+	}
 
-		
-		//
-		// Browser specific Fixes
-		//
-		
+	//
+	// The label
+	//
+
+	@include input-range-label($class) {
+		flex-shrink: 0;
+		width: $input-range-label-width;
+		padding: $input-range-label-padding;
+	}
+
+	//
+	// Browser specific Fixes
+	//
+	@include input-range-input($class) {
 		// Remove outline FF
 		&::-moz-focus-outer {
 			border: 0;
-		} 
+		}
 		// Aligning fix for Chrome
 		&:not(*:root)::-webkit-slider-thumb {
-			margin-top: -6px; // (thumb-height - track-height)/2
+			// transform: translateY(-50%);
+			margin-top: calc(
+				((#{$input-range-thumb-height} - #{$input-range-track-height}) / 2) * -1
+			); // (thumb-height - track-height)/2
 		}
 		//	IE Only
 		&::-ms-fill-lower,
@@ -104,11 +182,10 @@ $input-range-track-background: var(--input-range-thumb-background, white) !defau
 		&::-ms-tooltip {
 			display: none;
 		}
-		
-		
+
 		//
 		// Disabled
-		//		
+		//
 		&:disabled {
 			cursor: not-allowed;
 			@include input-range-thumb {
@@ -117,4 +194,32 @@ $input-range-track-background: var(--input-range-thumb-background, white) !defau
 			}
 		}
 	}
+	@if $input-range-min-label {
+		@include input-range-min-label($class) {
+			position: absolute;
+			bottom: 0;
+			display: block;
+			left: 0;
+			content: attr(min);
+		}
+	}
+
+	@if $input-range-max-label {
+		@include input-range-max-label($class) {
+			position: absolute;
+			bottom: 0;
+			display: block;
+			right: 0;
+			content: attr(max);
+		}
+	}
+}
+@mixin input-range-container($class: null) {
+	position: relative;
+	display: flex;
+	@if $input-range-container-reverse {
+		flex-flow: row-reverse;
+	}
+
+	@include input-range($class);
 }
