@@ -55,6 +55,16 @@ $input-range-container-reverse: true !default;
 $input-range-min-label: true !default;
 $input-range-max-label: true !default;
 
+$input-range-max-label-padding: var(--input-range-max-label-padding, 0.5em);
+$input-range-max-label-left: var(--input-range-max-label-left, 100%);
+$input-range-max-label-top: var(--input-range-max-label-top, 50%);
+$input-range-max-label-transform: var(--input-range-max-label-transform, translate(-50%));
+
+$input-range-min-label-padding: var(--input-range-max-label-padding, 0.5em);
+$input-range-min-label-left: var(--input-range-max-label-right, 100%);
+$input-range-min-label-top: var(--input-range-max-label-top, 50%);
+$input-range-min-label-transform: var(--input-range-max-label-transform, translate(-50%));
+
 @mixin input-range-input($class: null) {
 	#{$class}[type='range'] {
 		@content;
@@ -198,8 +208,9 @@ $input-range-max-label: true !default;
 		@include input-range-min-label($class) {
 			content: attr(min);
 			position: absolute;
-			bottom: 0;
-			left: 0;
+			top: 50%;
+			right: 100%;
+			transform: translateY(-50%);
 			display: block;
 		}
 	}
@@ -208,9 +219,11 @@ $input-range-max-label: true !default;
 		@include input-range-max-label($class) {
 			content: attr(max);
 			position: absolute;
-			right: 0;
-			bottom: 0;
+			top: $input-range-max-label-top;
+			left:$input-range-max-label-left;
+			transform:$input-range-max-label-transform;
 			display: block;
+			padding: $input-range-max-label-padding;
 		}
 	}
 }
