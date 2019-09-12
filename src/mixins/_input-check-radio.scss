@@ -83,18 +83,17 @@ $input-form-label-padding-left: var(
 );
 
 @mixin input-form-input($class: null, $type: 'checkbox') {
-	// @if type-of($type) == 'list'{
-	// 	@each $t in $type{
-	// 		#{$class} input[type='#{$t}'] {
-	// 			@content;
-	// 		}			
-	// 	}
-	// } @else {
-		@debug 'class: #{$class} ------ type: #{$type}';
+	@if type-of($type) == 'list'{
+		@each $t in $type{
+			#{$class} input[type='#{$t}'] {
+				@content;
+			}			
+		}
+	} @else {
 		input[type='#{$type}'] {
 			@content;
 		}
-	// }
+	}
 }
 @mixin input-form-body($class: null, $type: null) {
 	@include input-form-input($class, $type) {
