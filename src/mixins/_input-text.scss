@@ -12,7 +12,7 @@ $input-text-input-opacity: var(--input-text-input-opacity, 1) !default;
 $input-text-input-transition: var(--input-text-input-transition, 0.3s ease-in-out) !default;
 
 // Styling for the label
-$input-text-label-width: var(--input-text-label-width, 100%) !default;
+$input-text-label-width: var(--input-text-label-width, 50%) !default;
 $input-text-label-shadow: var(--input-text-label-shadow, 0 0 1rem 0 rgba(0,0,0,0)) !default;
 $input-text-label-border: var(--input-text-label-border, 0) !default;
 $input-text-label-background: var(--input-text-label-background, transparent) !default;
