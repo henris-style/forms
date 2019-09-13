@@ -90,7 +90,7 @@ $input-form-label-padding-left: var(
 			}			
 		}
 	} @else {
-		input[type='#{$type}'] {
+		#{$class} input[type='#{$type}'] {
 			@content;
 		}
 	}

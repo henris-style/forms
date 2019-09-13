@@ -58,15 +58,21 @@ $input-range-max-label: true !default;
 $input-range-max-label-padding: var(--input-range-max-label-padding, 0.5em);
 $input-range-max-label-left: var(--input-range-max-label-left, 100%);
 $input-range-max-label-top: var(--input-range-max-label-top, 50%);
-$input-range-max-label-transform: var(--input-range-max-label-transform, translate(-50%));
+$input-range-max-label-transform: var(
+	--input-range-max-label-transform,
+	translateY(-50%)
+);
 
 $input-range-min-label-padding: var(--input-range-max-label-padding, 0.5em);
-$input-range-min-label-left: var(--input-range-max-label-right, 100%);
+$input-range-min-label-right: var(--input-range-max-label-right, 100%);
 $input-range-min-label-top: var(--input-range-max-label-top, 50%);
-$input-range-min-label-transform: var(--input-range-max-label-transform, translate(-50%));
+$input-range-min-label-transform: var(
+	--input-range-max-label-transform,
+	translateY(-50%)
+);
 
 @mixin input-range-input($class: null) {
-	#{$class}[type='range'] {
+	#{$class} [type='range'] {
 		@content;
 	}
 }
@@ -208,10 +214,11 @@ $input-range-min-label-transform: var(--input-range-max-label-transform, transla
 		@include input-range-min-label($class) {
 			content: attr(min);
 			position: absolute;
-			top: 50%;
-			right: 100%;
+			top:$input-range-min-label-top;
+			right: $input-range-min-label-right;
 			display: block;
-			transform: translateY(-50%);
+			transform: $input-range-min-label-transform;
+			padding: $input-range-min-label-padding;
 		}
 	}
 
@@ -220,19 +227,23 @@ $input-range-min-label-transform: var(--input-range-max-label-transform, transla
 			content: attr(max);
 			position: absolute;
 			top: $input-range-max-label-top;
-			left:$input-range-max-label-left;
+			left: $input-range-max-label-left;
 			display: block;
-			transform:$input-range-max-label-transform;
+			transform: $input-range-max-label-transform;
 			padding: $input-range-max-label-padding;
 		}
 	}
 }
 @mixin input-range-container($class: null) {
-	position: relative;
-	display: flex;
-	@if $input-range-container-reverse {
-		flex-flow: row-reverse;
+	@include input-range-label($class) {
+		position: relative;
+		display: flex;
+		@if $input-range-container-reverse {
+			flex-flow: row-reverse;
+		}
 	}
-
+	@include input-range-input($class) {
+		@content;
+	}
 	@include input-range($class);
 }
