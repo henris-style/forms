@@ -113,7 +113,8 @@ $input-switch-check-shadow: var(
 	--input-switch-check-shadow,
 	0 0 0 2px black inset
 );
-$input-switch-check-top: 0px;
+$input-switch-check-opacity-false:  var(--input-switch-check-opacity-false, 0.25);
+$input-switch-check-opacity-true:  var(--input-switch-check-opacity-true, 1);
 
 @mixin input-switch($class: null) {
 	// Hide the Input
@@ -160,6 +161,8 @@ $input-switch-check-top: 0px;
 		width: $input-switch-check-width;
 		height: $input-switch-check-height;
 		box-shadow: $input-switch-check-shadow;
+		
+		opacity: $input-switch-check-opacity-false;
 
 		border-radius: $input-switch-check-border-radius;
 		background-color: $input-switch-check-background;
@@ -174,7 +177,7 @@ $input-switch-check-top: 0px;
 	}
 	@include input-switch-check-checked($class) {
 		transform: translateX(calc(#{$input-switch-body-width} - #{$input-switch-check-width} - (#{  $input-switch-body-height} - #{$input-switch-check-height})));
-		opacity: 1;
+		opacity: $input-switch-check-opacity-true;
 	}
 }
 @mixin input-switch-container($class: '.input-switch') {
