@@ -5,7 +5,7 @@ $input-range-shadow: var(--input-range-shadow, none) !default;
 $input-range-border: var(--input-range-border, 0) !default;
 $input-range-border-radius: var(--input-range-border-radius, 50%) !default;
 $input-range-background: var(--input-range-background, transparent) !default;
-$input-range-padding: var(--input-range-padding, 1em 0);
+$input-range-padding: var(--input-range-padding, 1em);
 
 // Styling for the range thumb
 $input-range-thumb-width: var(--input-range-thumb-width, 1rem) !default;
@@ -44,7 +44,7 @@ $input-range-track-background: var(
 	rgba(0, 0, 0, 0.25)
 ) !default;
 
-$input-range-label-width: var(--input-range-label-width, 10em) !default;
+$input-range-label-width: var(--input-range-label-width, 50%) !default;
 $input-range-label-padding: var(
 	--input-range-padding,
 	#{$input-range-padding}
@@ -235,11 +235,13 @@ $input-range-min-label-transform: var(
 	}
 }
 @mixin input-range-container($class: null) {
-	@include input-range-label($class) {
-		position: relative;
-		display: flex;
-		@if $input-range-container-reverse {
-			flex-flow: row-reverse;
+	@if $class != null{	
+		#{$class} {
+			position: relative;
+			display: flex;
+			@if $input-range-container-reverse {
+				flex-flow: row-reverse;
+			}
 		}
 	}
 	@include input-range-input($class) {
