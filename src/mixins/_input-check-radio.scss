@@ -160,7 +160,11 @@ $input-form-label-padding-left: var(
 }
 
 @mixin input-form-container($class: null, $type: null) {
-	position: relative;
+	@if $class != null{
+		#{$class}{
+			position: relative;
+		}
+	} 
 	@include input-form($class, $type){
 		@content;
 	};
