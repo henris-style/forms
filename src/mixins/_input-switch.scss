@@ -135,6 +135,8 @@ $input-switch-check-top: 0px;
 
 	@include input-switch-body($class) {
 		content: '';
+		position: absolute;
+		left: $input-switch-label-padding;
 		display: block;
 		width: $input-switch-body-width;
 		height: $input-switch-body-height;
@@ -142,9 +144,6 @@ $input-switch-check-top: 0px;
 		box-shadow: $input-switch-body-shadow;
 		box-sizing: border-box;
 		border: $input-switch-body-border;
-		position: absolute;
-		left: $input-switch-label-padding;
-		top: $input-switch-body-top;
 		border-radius: $input-switch-body-border-radius;
 		background-color: $input-switch-body-background;
 		transform: rotate(0deg);
@@ -160,19 +159,18 @@ $input-switch-check-top: 0px;
 		display: block;
 		width: $input-switch-check-width;
 		height: $input-switch-check-height;
-		// top: $input-switch-check-top;
 		box-shadow: $input-switch-check-shadow;
 
 		border-radius: $input-switch-check-border-radius;
 		background-color: $input-switch-check-background;
 		transform: scale(1);
-		opacity: 0.25;
 		transition: $base-transition $base-cubic-bezier;
 		margin-top: calc((#{$input-switch-check-height} / 2) * -1);
 	}
 
 	@include input-switch-label-checked($class) {
 		color: color(Black);
+		opacity: 1;
 	}
 	@include input-switch-check-checked($class) {
 		transform: translateX(calc(#{$input-switch-body-width} - #{$input-switch-check-width} - (#{  $input-switch-body-height} - #{$input-switch-check-height})));
