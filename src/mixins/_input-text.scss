@@ -114,7 +114,6 @@ $input-text-container-margin: var(--input-text-container-margin, 1em) !default;
 }
 
 @mixin input-text-container($class: null, $types:null){
-	@debug $class;
 	@if $class != null{
 	
 		#{$class}{	

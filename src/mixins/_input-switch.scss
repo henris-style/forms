@@ -173,9 +173,9 @@ $input-switch-check-opacity-true:  var(--input-switch-check-opacity-true, 1) !de
 		opacity: 1;
 	}
 	@include input-switch-check-checked($class) {
+		background-color: $input-switch-check-background;
 		transform: translateX(calc(#{$input-switch-body-width} - #{$input-switch-check-width} - (#{  $input-switch-body-height} - #{$input-switch-check-height})));
 		opacity: $input-switch-check-opacity-true;
-		background-color: $input-switch-check-background;
 	}
 }
 @mixin input-switch-container($class: '.input-switch') {
