@@ -114,6 +114,7 @@ $input-text-container-margin: var(--input-text-container-margin, 1em) !default;
 }
 
 @mixin input-text-container($class: null, $types:null){
+	@debug $class;
 	@if $class != null{
 	
 		#{$class}{	
@@ -128,9 +129,9 @@ $input-text-container-margin: var(--input-text-container-margin, 1em) !default;
 			& + #{$class}{
 				margin-top: $input-text-container-margin;
 			}
+			@content;
+			@include input-text($types);
 		}
-		@include input-text($types);
-		@content;
 	} @else {	
 		position: $input-text-container-position;
 		z-index: 1;

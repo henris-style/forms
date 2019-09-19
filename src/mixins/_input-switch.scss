@@ -79,42 +79,39 @@
 	}
 }
 
-$input-switch-label-padding: var(--input-switch-label-padding, 1em);
+$input-switch-label-padding: var(--input-switch-label-padding, 1em) !default;
 
-$input-switch-body-width: var(--input-switch-body-width, 1.5rem);
-$input-switch-body-height: var(--input-switch-body-height, 1rem);
+$input-switch-body-width: var(--input-switch-body-width, 1.5rem) !default;
+$input-switch-body-height: var(--input-switch-body-height, 1rem) !default;
 $input-switch-body-border-radius: var(
 	--input-switch-body-height,
 	calc(#{$input-switch-body-height} / 2)
-);
-$input-switch-body-background: var(--input-switch-body-background, white);
+) !default;
+$input-switch-body-background: var(--input-switch-body-background, white) !default;
 $input-switch-body-border: var(
 	--input-switch-body-border,
 	1px solid currentColor
-);
-$input-switch-body-shadow: none;
+) !default;
+$input-switch-body-shadow:  var(--input-switch-body-shadow, none) !default;
 
-$input-switch-body-top: 0px;
 
-$input-switch-check-width: var(--input-switch-check-width, .5rem);
-$input-switch-check-height: var(--input-switch-check-height, .5rem);
+$input-switch-check-width: var(--input-switch-check-width, .5rem) !default;
+$input-switch-check-height: var(--input-switch-check-height, .5rem) !default;
 $input-switch-check-border-radius: var(
 	--input-switch-check-height,
 	calc(#{$input-switch-check-height} / 2)
-);
+) !default;
 
 $input-switch-check-top: var(
 	--input-switch-check-top,
 	calc(50% - ($input-switch-check-height / 2))
-);
-$input-switch-check-background: var(--input-switch-check-background, black);
-$input-switch-check-border: var(--input-switch-check-border, 0);
-$input-switch-check-shadow: var(
-	--input-switch-check-shadow,
-	0 0 0 2px black inset
-);
-$input-switch-check-opacity-false:  var(--input-switch-check-opacity-false, 0.25);
-$input-switch-check-opacity-true:  var(--input-switch-check-opacity-true, 1);
+) !default;
+$input-switch-check-background: var(--input-switch-check-background, black) !default;
+$input-switch-check-background-false: var(--input-switch-check-background-false,rgba(0,0,0,0.25)) !default;
+$input-switch-check-border: var(--input-switch-check-border, 0) !default;
+$input-switch-check-shadow: var(--input-switch-check-shadow, none) !default;
+$input-switch-check-opacity-false:  var(--input-switch-check-opacity-false, 0.25) !default;
+$input-switch-check-opacity-true:  var(--input-switch-check-opacity-true, 1) !default;
 
 @mixin input-switch($class: null) {
 	// Hide the Input
@@ -161,12 +158,12 @@ $input-switch-check-opacity-true:  var(--input-switch-check-opacity-true, 1);
 		width: $input-switch-check-width;
 		height: $input-switch-check-height;
 		box-shadow: $input-switch-check-shadow;
-		
-		opacity: $input-switch-check-opacity-false;
 
 		border-radius: $input-switch-check-border-radius;
-		background-color: $input-switch-check-background;
+		background-color: $input-switch-check-background-false;
 		transform: scale(1);
+		
+		opacity: $input-switch-check-opacity-false;
 		transition: $base-transition $base-cubic-bezier;
 		margin-top: calc((#{$input-switch-check-height} / 2) * -1);
 	}
@@ -178,6 +175,7 @@ $input-switch-check-opacity-true:  var(--input-switch-check-opacity-true, 1);
 	@include input-switch-check-checked($class) {
 		transform: translateX(calc(#{$input-switch-body-width} - #{$input-switch-check-width} - (#{  $input-switch-body-height} - #{$input-switch-check-height})));
 		opacity: $input-switch-check-opacity-true;
+		background-color: $input-switch-check-background;
 	}
 }
 @mixin input-switch-container($class: '.input-switch') {
